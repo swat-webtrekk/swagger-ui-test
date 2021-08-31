@@ -1,0 +1,152 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Analytics API",
+    "description": "OpenAPI 3.0 Specification of Mapp Intelligence AnalyticsAPI",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Mapp",
+      "url": "https://www.mapp.com",
+      "email": "swat@webtrekk.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://analytics-int-01.nbg.webtrekk.com/analytics-service/intelligence-api/",
+      "description": "API Endpoint"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Query Management",
+      "description": "Create and managemennt of analysis query"
+    },
+    {
+      "name": "Data Delivery",
+      "description": "Provide analysis data"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "oauth_security_scheme": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://analytics-int-01.nbg.webtrekk.com/analytics-service/intelligence-api/oauth/token",
+            "scopes": {
+              "mapp.intelligence-api": "submit analysis query"
+            }
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "oauth_security_scheme": [
+        "mapp.intelligence-api"
+      ]
+    }
+  ],
+  "paths": {
+    "/analysis-query": {
+      "post": {
+        "tags": [
+          "Query Management"
+        ],
+        "summary": "Submit analysis query",
+        "description": "Long description Submit an analysis query",
+        "externalDocs": {
+          "url": "https://documentation.mapp.com"
+        },
+        "requestBody": {
+          "description": "Analytics Request Format",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "/query-example-1.json"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Analysis already available"
+          },
+          "201": {
+            "description": "Analysis enqueued"
+          }
+        }
+      }
+    },
+    "/analysis-query/{correlationId}": {
+      "get": {
+        "tags": [
+          "Query Management"
+        ],
+        "summary": "Get query status",
+        "description": "Long description",
+        "externalDocs": {
+          "url": "https://documentation.mapp.com"
+        },
+        "parameters": [
+          {
+            "name": "correlationId",
+            "in": "path",
+            "description": "ID of the query",
+            "required": true
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Query Management"
+        ],
+        "summary": "Cancel query",
+        "description": "Long description",
+        "externalDocs": {
+          "url": "https://documentation.mapp.com"
+        },
+        "parameters": [
+          {
+            "name": "correlationId",
+            "in": "path",
+            "description": "ID of the query to be canceled",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Query canceled"
+          },
+          "401": {
+            "description": "Request unauthorized. Valid Oauth Token required."
+          },
+          "404": {
+            "description": "Query not found"
+          }
+        }
+      }
+    },
+    "/analysis-result/{resultId}": {
+      "get": {
+        "tags": [
+          "Data Delivery"
+        ],
+        "summary": "Download analysis data",
+        "description": "Long description",
+        "externalDocs": {
+          "url": "https://documentation.mapp.com"
+        },
+        "parameters": [
+          {
+            "name": "resultId",
+            "in": "path",
+            "description": "ID of the data result",
+            "required": true
+          }
+        ]
+      }
+    }
+  }
+}

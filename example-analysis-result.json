@@ -1,0 +1,88 @@
+{
+  "calculationDataType": "RAW_DATA",
+  "rows": [
+    [
+      "20210603",
+      null,
+      null,
+      11.905667554203118,
+      540.0600988969189,
+      27.15953307392996
+    ],
+    [
+      "20210604",
+      null,
+      null,
+      12.287988923502942,
+      509.31568016614744,
+      26.64543524416136
+    ],
+    [
+      "20210605",
+      null,
+      null,
+      20.974760661444737,
+      313.7528285465622,
+      25.699300699300696
+    ],
+    [
+      "0000000000",
+      null,
+      null,
+      13.289757534264272,
+      494.52523908559715,
+      27.19513533686036
+    ]
+  ],
+  "rowCount": 3,
+  "rowCountTotal": 87,
+  "headers": [
+    {
+      "alias": "time_id_categories_t_year_month_day|0",
+      "arrangeType": "time_id_categories_t_year_month_day",
+      "sumPositions": [
+        4
+      ],
+      "name": "time_days",
+      "sortIndex": 0,
+      "sortDirection": "ASCENDING"
+    },
+    {
+      "alias": "visits|0",
+      "arrangeType": "visits",
+      "name": "visits",
+      "metric": true
+    },
+    {
+      "alias": "page_impressions|0",
+      "arrangeType": "page_impressions",
+      "name": "pages_pageImpressions",
+      "metric": true
+    },
+    {
+      "alias": "predefined_formula_new_visitor_rate|0",
+      "arrangeType": "predefined_formula_new_visitor_rate",
+      "name": "visits_newShare",
+      "metric": true
+    },
+    {
+      "alias": "predefined_formula_avg_visit_duration|0",
+      "arrangeType": "predefined_formula_avg_visit_duration",
+      "name": "visit_duration_avg",
+      "metric": true
+    },
+    {
+      "alias": "predefined_formula_bounce_rate|0",
+      "arrangeType": "predefined_formula_bounce_rate",
+      "name": "visits_bounceRate",
+      "metric": true
+    }
+  ],
+  "columnCount": 6,
+  "warnings": [],
+  "timerange": [
+    "2021-06-03T00:00:00.000+0200",
+    "2021-08-29T00:00:00.000+0200"
+  ],
+  "timestamp": "2021-08-31T19:27:08.863+0200"
+}

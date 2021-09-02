@@ -213,7 +213,7 @@
         ]
       },
       "AnalysisResult": {
-        "$ref": "schema-analysis-result.json"
+        "$ref": "./schema-analysis-result.json"
       },
       "Problem": {
         "type": "object",
@@ -342,7 +342,7 @@
               },
               "examples": {
                 "Pivot" : {
-                  "$ref": "/example-analysis-query.json"
+                  "$ref": "./example-analysis-query.json"
                 }
               }
             }

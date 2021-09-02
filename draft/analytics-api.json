@@ -19,7 +19,7 @@
   "tags": [
     {
       "name": "Query Management",
-      "description": "Create and management of analysis query"
+      "description": "Analysis query lifecycle"
     },
     {
       "name": "Data Delivery",

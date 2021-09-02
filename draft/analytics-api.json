@@ -80,6 +80,13 @@
           "NONE"
         ]
       },
+      "ScopeEnum": {
+        "type": "string",
+        "enum": [
+          "OBJECT",
+          "NONE"
+        ]
+      },
       "Container": {
         "type": "object",
         "properties": {
@@ -91,7 +98,8 @@
               "description": "Filter",
               "properties": {
                 "name": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "TODO: What is that? Needed?"
                 },
                 "filterPredicate": {
                   "$ref": "#/components/schemas/FilterPredictateEnum"
@@ -106,7 +114,8 @@
                   "$ref": "#/components/schemas/ContextEnum"
                 },
                 "intern": {
-                  "type": "boolean"
+                  "type": "boolean",
+                  "description": "TODO: What is that? Needed?"
                 },
                 "value1": {
                   "type": "string"
@@ -131,7 +140,9 @@
             "$ref": "#/components/schemas/ContextEnum"
           },
           "type": {
-            "type": "string"
+            "description": "TODO: What is that? Needed?",
+            "type": "string",
+            "enum": ["NORMAL", "TIME_ORDER"]
           },
           "inOrNotIn": {
             "$ref": "#/components/schemas/InOrNotInPredictateEnum"
@@ -162,7 +173,8 @@
                       "type": "string"
                     },
                     "sortDirection": {
-                      "type": "string"
+                      "type": "string",
+                      "enum": ["ASCENDING","DESCENDING"]
                     },
                     "lowerLimit": {
                       "type": "integer"
@@ -171,16 +183,19 @@
                       "type": "integer"
                     },
                     "columnPeriod": {
-                      "type": "string"
+                      "type": "string",
+                      "description": "TODO: What is that? Needed?"
                     },
                     "scope": {
-                      "type": "string"
+                      "$ref": "#/components/schemas/ScopeEnum"
                     },
                     "context": {
-                      "type": "string"
+                      "$ref": "#/components/schemas/ContextEnum"
                     },
                     "variant": {
-                      "type": "string"
+                      "type": "string",
+                      "description": "TODO: What is that? Needed?",
+                      "enum": ["NORMAL"]
                     },
                     "predefinedContainer": {
                       "$ref": "#/components/schemas/Container"
@@ -193,11 +208,37 @@
                 "description": "Type of Data Structure",
                 "enum": [
                   "LIST",
-                  "PIVOT"
+                  "PIVOT",
+                  "PIVOT_AS_LIST"
                 ]
               },
               "predefinedContainer": {
                 "$ref": "#/components/schemas/Container"
+              },
+              "predefinedSegmentConnections": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "segmentID": {
+                      "type": "string",
+                      "description": "ID of the Segment"
+                    },
+                    "connectorPredicate": {
+                      "type": "string"
+                    },
+                    "inOrNotInPredicate": {
+                      "type": "string"
+                    },
+                    "context": {
+                      "$ref": "#/components/schemas/ContextEnum"
+                    },
+                    "position": {
+                      "type": "integer",
+                      "description": "Indicates segment ordering in case of several Segment"
+                    }
+                  }
+                }
               }
             },
             "required": [
@@ -219,7 +260,7 @@
         "type": "object",
         "properties": {
           "status": {
-            "type": "string",
+            "type": "integer",
             "description": "HTTP Status Code"
           },
           "statusCode": {
@@ -255,15 +296,16 @@
               "SUCCESS",
               "FAILED",
               "ABORTED",
-              "RUNNING"
+              "RUNNING",
+              "INITIATED"
             ]
           },
           "details": {
             "type": "object",
             "properties": {
               "lastUpdatedAt": {
-                "type": "string",
-                "format": "date-time"
+                "type": "number",
+                "description": "TODO: Why millisecond format ?"
               }
             }
           }
@@ -341,7 +383,7 @@
                 "$ref": "#/components/schemas/AnalysisQuery"
               },
               "examples": {
-                "Pivot" : {
+                "Pivot": {
                   "$ref": "./example-analysis-query.json"
                 }
               }

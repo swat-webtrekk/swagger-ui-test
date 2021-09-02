@@ -4,7 +4,8 @@
       "type": "string",
       "description": "DataType returned",
       "enum": [
-        "RAW_DATA"
+        "RAW_DATA",
+        "RAW_DATA_SAMPLING"
       ]
     },
     "rows": {
@@ -18,11 +19,11 @@
       }
     },
     "rowCount": {
-      "type": "number",
+      "type": "integer",
       "description": "Number of rows returned."
     },
     "rowCountTotal": {
-      "type": "number",
+      "type": "integer",
       "description": "Number of rows in the whole resultSet"
     },
     "headers": {
@@ -54,18 +55,18 @@
             "type": "array",
             "description": "Indicates which rows contains a (sub)total value",
             "items": {
-              "type": "number"
-            },
-            "pivotGroups" : {
-              "type": "array",
-              "description": "Indicates which rows contains a grouping row",
-              "items": {
-                "type": "number"
-              }
+              "type": "integer"
+            }
+          },
+          "pivotGroups" : {
+            "type": "array",
+            "description": "Indicates which rows contains a grouping row",
+            "items": {
+              "type": "integer"
             }
           },
           "sortIndex": {
-            "type": "number",
+            "type": "integer",
             "description": "Indicates order of sorting when there is more than one sorting column. (starting from 0)"
           },
           "sortDirection": {
@@ -80,7 +81,7 @@
       }
     },
     "columnCount": {
-      "type": "number",
+      "type": "integer",
       "description": "Number of columns"
     },
     "warnings": {

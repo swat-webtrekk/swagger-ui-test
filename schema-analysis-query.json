@@ -1,0 +1,419 @@
+{
+  "properties": {
+    "resultType": {
+      "type": "string"
+    },
+    "queryObject": {
+      "type": "object",
+      "properties": {
+        "columns": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "scope": {
+                  "type": "string"
+                },
+                "context": {
+                  "type": "string"
+                },
+                "lowerLimit": {
+                  "type": "integer"
+                },
+                "upperLimit": {
+                  "type": "integer"
+                }
+              }
+            },
+            {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "sortDirection": {
+                  "type": "string"
+                },
+                "scope": {
+                  "type": "string"
+                },
+                "context": {
+                  "type": "string"
+                },
+                "lowerLimit": {
+                  "type": "integer"
+                },
+                "upperLimit": {
+                  "type": "integer"
+                }
+              }
+            },
+            {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "columnPeriod": {
+                  "type": "string"
+                },
+                "scope": {
+                  "type": "string"
+                },
+                "context": {
+                  "type": "string"
+                },
+                "variant": {
+                  "type": "string"
+                },
+                "predefinedContainer": {
+                  "type": "object",
+                  "properties": {
+                    "filters": {
+                      "type": "array",
+                      "items": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string"
+                            },
+                            "caseSensitive": {
+                              "type": "boolean"
+                            },
+                            "context": {
+                              "type": "string"
+                            },
+                            "filterPredicate": {
+                              "type": "string"
+                            },
+                            "connector": {
+                              "type": "string"
+                            },
+                            "value1": {
+                              "type": "string"
+                            },
+                            "value2": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "caseSensitive",
+                            "context",
+                            "filterPredicate",
+                            "connector",
+                            "value1",
+                            "value2"
+                          ]
+                        }
+                      ]
+                    },
+                    "containers": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  },
+                  "required": [
+                    "filters",
+                    "containers"
+                  ]
+                }
+              },
+              "required": [
+                "name",
+                "columnPeriod",
+                "scope",
+                "context",
+                "variant",
+                "predefinedContainer"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "columnPeriod": {
+                  "type": "string"
+                },
+                "scope": {
+                  "type": "string"
+                },
+                "context": {
+                  "type": "string"
+                },
+                "variant": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name",
+                "columnPeriod",
+                "scope",
+                "context",
+                "variant"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "columnPeriod": {
+                  "type": "string"
+                },
+                "scope": {
+                  "type": "string"
+                },
+                "variant": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name",
+                "columnPeriod",
+                "scope",
+                "variant"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "columnPeriod": {
+                  "type": "string"
+                },
+                "scope": {
+                  "type": "string"
+                },
+                "variant": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name",
+                "columnPeriod",
+                "scope",
+                "variant"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "columnPeriod": {
+                  "type": "string"
+                },
+                "scope": {
+                  "type": "string"
+                },
+                "variant": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name",
+                "columnPeriod",
+                "scope",
+                "variant"
+              ]
+            }
+          ]
+        },
+        "variant": {
+          "type": "string"
+        },
+        "predefinedContainer": {
+          "type": "object",
+          "properties": {
+            "filters": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "filterPredicate": {
+                      "type": "string"
+                    },
+                    "connector": {
+                      "type": "string"
+                    },
+                    "caseSensitive": {
+                      "type": "boolean"
+                    },
+                    "context": {
+                      "type": "string"
+                    },
+                    "intern": {
+                      "type": "boolean"
+                    },
+                    "value1": {
+                      "type": "string"
+                    },
+                    "value2": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "filterPredicate",
+                    "connector",
+                    "caseSensitive",
+                    "context",
+                    "intern",
+                    "value1",
+                    "value2"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "caseSensitive": {
+                      "type": "boolean"
+                    },
+                    "context": {
+                      "type": "string"
+                    },
+                    "filterPredicate": {
+                      "type": "string"
+                    },
+                    "connector": {
+                      "type": "string"
+                    },
+                    "intern": {
+                      "type": "boolean"
+                    },
+                    "value1": {
+                      "type": "string"
+                    },
+                    "value2": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "caseSensitive",
+                    "context",
+                    "filterPredicate",
+                    "connector",
+                    "intern",
+                    "value1",
+                    "value2"
+                  ]
+                }
+              ]
+            },
+            "containers": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "containers": {
+                      "type": "array",
+                      "items": {}
+                    },
+                    "filters": {
+                      "type": "array",
+                      "items": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string"
+                            },
+                            "caseSensitive": {
+                              "type": "boolean"
+                            },
+                            "context": {
+                              "type": "string"
+                            },
+                            "filterPredicate": {
+                              "type": "string"
+                            },
+                            "connector": {
+                              "type": "string"
+                            },
+                            "intern": {
+                              "type": "boolean"
+                            },
+                            "value1": {
+                              "type": "string"
+                            },
+                            "value2": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "caseSensitive",
+                            "context",
+                            "filterPredicate",
+                            "connector",
+                            "intern",
+                            "value1",
+                            "value2"
+                          ]
+                        }
+                      ]
+                    },
+                    "connector": {
+                      "type": "string"
+                    },
+                    "context": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "inOrNotIn": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "containers",
+                    "filters",
+                    "connector",
+                    "context",
+                    "type",
+                    "inOrNotIn"
+                  ]
+                }
+              ]
+            }
+          },
+          "required": [
+            "filters",
+            "containers"
+          ]
+        }
+      },
+      "required": [
+        "columns",
+        "variant",
+        "predefinedContainer"
+      ]
+    }
+  },
+  "required": [
+    "resultType",
+    "queryObject"
+  ]
+}

@@ -213,7 +213,7 @@
         ]
       },
       "AnalysisResult": {
-        "$ref": "/schema-analysis-result.json"
+        "$ref": "schema-analysis-result.json"
       },
       "Problem": {
         "type": "object",
@@ -531,7 +531,7 @@
                 },
                 "examples": {
                   "Simple analysis result": {
-                    "$ref": "/example-analysis-result.json"
+                    "$ref": "./example-analysis-result.json"
                   }
                 }
               }

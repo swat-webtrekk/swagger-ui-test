@@ -41,112 +41,179 @@
       }
     },
     "schemas": {
-      "AnalysisQuery": {
+      "FilterPredictateEnum": {
+        "type": "string",
+        "enum": [
+          "EQUAL",
+          "UNEQUAL",
+          "LESS",
+          "LESSEQUAL",
+          "GREATER",
+          "GREATEREQUAL",
+          "BETWEEN",
+          "LIKE",
+          "NOT_LIKE"
+        ]
       },
-      "AnalysisResult": {
+      "ConnectorPredictateEnum": {
+        "type": "string",
+        "enum": [
+          "AND",
+          "OR"
+        ]
+      },
+      "InOrNotInPredictateEnum": {
+        "type": "string",
+        "enum": [
+          "IN",
+          "NOT_IN"
+        ]
+      },
+      "ContextEnum": {
+        "type": "string",
+        "enum": [
+          "VISITOR",
+          "SESSION",
+          "PAGE",
+          "ACTION",
+          "ATOMIC",
+          "NONE"
+        ]
+      },
+      "Container": {
         "type": "object",
-        "required": [],
         "properties": {
-          "calculationDataType": {
-            "type": "string",
-            "description": "DataType returned",
-            "enum": [
-              "RAW_DATA"
-            ]
-          },
-          "rows": {
+          "filters": {
             "type": "array",
-            "description": "Array of rows",
-            "items": {
-              "type": "array",
-              "description": "Array of values following the strict order of the headers",
-              "items": {
-              }
-            }
-          },
-          "rowCount": {
-            "type": "number",
-            "description": "Number of rows returned."
-          },
-          "rowCountTotal": {
-            "type": "number",
-            "description": "Number of rows in the whole resultSet"
-          },
-          "headers": {
-            "type": "array",
+            "description": "Array of filters",
             "items": {
               "type": "object",
+              "description": "Filter",
               "properties": {
                 "name": {
-                  "type": "string",
-                  "description": "Name of the Dimension or Metric"
+                  "type": "string"
                 },
-                "alias": {
-                  "type": "string",
-                  "description": "Generated unique identifier of the column in the analysis."
+                "filterPredicate": {
+                  "$ref": "#/components/schemas/FilterPredictateEnum"
                 },
-                "arrangeType": {
-                  "type": "string",
-                  "description": "Mapp identifier of the Dimension or Metric"
+                "connector": {
+                  "$ref": "#/components/schemas/ConnectorPredictateEnum"
                 },
-                "metric": {
-                  "type": "boolean",
-                  "description": "Indicates if column is a metric"
+                "caseSensitive": {
+                  "type": "boolean"
                 },
-                "dimension": {
-                  "type": "boolean",
-                  "description": "Indicates if column is a dimension"
+                "context": {
+                  "$ref": "#/components/schemas/ContextEnum"
                 },
-                "sumPositions": {
-                  "type": "array",
-                  "description": "Indiciates which rows contains a (sub)total value",
-                  "items": {
-                    "type": "number"
-                  }
+                "intern": {
+                  "type": "boolean"
                 },
-                "sortIndex": {
-                  "type": "number",
-                  "description": "Indicates order of sorting when there is more than one sorting column. (starting from 0)"
+                "value1": {
+                  "type": "string"
                 },
-                "sortDirection": {
-                  "type": "string",
-                  "description": "Sorting direction if any",
-                  "enum": [
-                    "ASCENDING",
-                    "DESCENDING"
-                  ]
+                "value2": {
+                  "type": "string"
                 }
               }
             }
           },
-          "columnCount": {
-            "type": "number",
-            "description": "Number of columns"
-          },
-          "warnings": {
+          "containers": {
             "type": "array",
-            "description": "Array of warnings occurred during calculation",
+            "description": "array of containers (recursion)",
             "items": {
-              "type": "string",
-              "description": "Warning description"
+              "$ref": "#/components/schemas/Container"
             }
           },
-          "timerange": {
-            "type": "array",
-            "minItems": 2,
-            "maxItems": 2,
-            "items": {
-              "type": "string",
-              "format": "date-time"
-            },
-            "description": "Analysis timerange"
+          "connector": {
+            "$ref": "#/components/schemas/ConnectorPredictateEnum"
           },
-          "timestamp": {
-            "type": "string",
-            "format": "date-time",
-            "description": "Timestamp of the calculation"
+          "context": {
+            "$ref": "#/components/schemas/ContextEnum"
+          },
+          "type": {
+            "type": "string"
+          },
+          "inOrNotIn": {
+            "$ref": "#/components/schemas/InOrNotInPredictateEnum"
           }
         }
+      },
+      "AnalysisQuery": {
+        "type": "object",
+        "properties": {
+          "resultType": {
+            "type": "string",
+            "description": "Type of result",
+            "enum": [
+              "DATA_ONLY"
+            ]
+          },
+          "queryObject": {
+            "type": "object",
+            "description": "Query definition",
+            "properties": {
+              "columns": {
+                "type": "array",
+                "description": "Array of columns",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "sortDirection": {
+                      "type": "string"
+                    },
+                    "lowerLimit": {
+                      "type": "integer"
+                    },
+                    "upperLimit": {
+                      "type": "integer"
+                    },
+                    "columnPeriod": {
+                      "type": "string"
+                    },
+                    "scope": {
+                      "type": "string"
+                    },
+                    "context": {
+                      "type": "string"
+                    },
+                    "variant": {
+                      "type": "string"
+                    },
+                    "predefinedContainer": {
+                      "$ref": "#/components/schemas/Container"
+                    }
+                  }
+                }
+              },
+              "variant": {
+                "type": "string",
+                "description": "Type of Data Structure",
+                "enum": [
+                  "LIST",
+                  "PIVOT"
+                ]
+              },
+              "predefinedContainer": {
+                "$ref": "#/components/schemas/Container"
+              }
+            },
+            "required": [
+              "columns",
+              "variant",
+              "predefinedContainer"
+            ]
+          }
+        },
+        "required": [
+          "resultType",
+          "queryObject"
+        ]
+      },
+      "AnalysisResult": {
+        "$ref": "/schema-analysis-result.json"
       },
       "Problem": {
         "type": "object",
@@ -184,7 +251,12 @@
           "status": {
             "type": "string",
             "description": "Analysis query state",
-            "enum": ["SUCCESS", "FAILED", "ABORTED", "RUNNING"]
+            "enum": [
+              "SUCCESS",
+              "FAILED",
+              "ABORTED",
+              "RUNNING"
+            ]
           },
           "details": {
             "type": "object",
@@ -208,12 +280,12 @@
             },
             "examples": {
               "AnalysisNotFound": {
-                "summary": "Missing Token",
+                "summary": "Invalid Token",
                 "value": {
-                  "title": "TODO",
+                  "title": "Invalid Token",
                   "status": 403,
-                  "detail": "TODO",
-                  "statusCode": "TODO"
+                  "detail": "Token not valid",
+                  "statusCode": "INVALID_TOKEN"
                 }
               }
             }
@@ -267,6 +339,11 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/AnalysisQuery"
+              },
+              "examples": {
+                "Pivot" : {
+                  "$ref": "/example-analysis-query.json"
+                }
               }
             }
           }
@@ -454,89 +531,7 @@
                 },
                 "examples": {
                   "Simple analysis result": {
-                    "value": {
-                      "calculationDataType": "RAW_DATA",
-                      "rows": [
-                        [
-                          "20210603",
-                          null,
-                          null,
-                          11.905667554203118,
-                          540.0600988969189,
-                          27.15953307392996
-                        ],
-                        [
-                          "20210604",
-                          null,
-                          null,
-                          12.287988923502942,
-                          509.31568016614744,
-                          26.64543524416136
-                        ],
-                        [
-                          "20210605",
-                          null,
-                          null,
-                          20.974760661444737,
-                          313.7528285465622,
-                          25.699300699300696
-                        ]
-                      ],
-                      "rowCount": 3,
-                      "rowCountTotal": 87,
-                      "headers": [
-                        {
-                          "alias": "time_id_categories_t_year_month_day|0",
-                          "arrangeType": "time_id_categories_t_year_month_day",
-                          "sumPositions": [
-                            87
-                          ],
-                          "name": "time_days",
-                          "sortIndex": 0,
-                          "sortDirection": "ASCENDING"
-                        },
-                        {
-                          "alias": "visits|0",
-                          "arrangeType": "visits",
-                          "name": "visits",
-                          "metric": true
-                        },
-                        {
-                          "alias": "page_impressions|0",
-                          "arrangeType": "page_impressions",
-                          "name": "pages_pageImpressions",
-                          "metric": true
-                        },
-                        {
-                          "alias": "predefined_formula_new_visitor_rate|0",
-                          "arrangeType": "predefined_formula_new_visitor_rate",
-                          "name": "visits_newShare",
-                          "metric": true
-                        },
-                        {
-                          "alias": "predefined_formula_avg_visit_duration|0",
-                          "arrangeType": "predefined_formula_avg_visit_duration",
-                          "name": "visit_duration_avg",
-                          "metric": true
-                        },
-                        {
-                          "alias": "predefined_formula_bounce_rate|0",
-                          "arrangeType": "predefined_formula_bounce_rate",
-                          "name": "visits_bounceRate",
-                          "metric": true
-                        }
-                      ],
-                      "columnCount": 6,
-                      "warnings": [],
-                      "timerange": [
-                        "2021-06-03T00:00:00.000+0200",
-                        "2021-08-29T00:00:00.000+0200"
-                      ],
-                      "timestamp": "2021-08-31T19:27:08.863+0200"
-                    }
-                  },
-                  "Ref analyis result" : {
-                    "$ref": "example-analysis-result.json"
+                    "$ref": "/example-analysis-result.json"
                   }
                 }
               }

@@ -22,33 +22,28 @@
           "name": "visits",
           "columnPeriod": "ANALYSIS",
           "scope": "OBJECT",
-          "context": "SESSION",
-          "variant": "NORMAL"
+          "context": "SESSION"
         },
         {
           "name": "pages_pageImpressions",
           "columnPeriod": "ANALYSIS",
           "scope": "OBJECT",
-          "context": "PAGE",
-          "variant": "NORMAL"
+          "context": "PAGE"
         },
         {
           "name": "visits_newShare",
           "columnPeriod": "ANALYSIS",
-          "scope": "OBJECT",
-          "variant": "NORMAL"
+          "scope": "OBJECT"
         },
         {
           "name": "visit_duration_avg",
           "columnPeriod": "ANALYSIS",
-          "scope": "OBJECT",
-          "variant": "NORMAL"
+          "scope": "OBJECT"
         },
         {
           "name": "visits_bounceRate",
           "columnPeriod": "ANALYSIS",
-          "scope": "OBJECT",
-          "variant": "NORMAL"
+          "scope": "OBJECT"
         },
         {
           "name": "visits",

@@ -87,6 +87,15 @@
           "NONE"
         ]
       },
+      "ColumnPeriodEnum": {
+        "type": "string",
+        "description": "Indicates which Time range must be used for the column. ANALYSIS: uses the analysis time range. COLUMN: uses the time filter defined inside the column. ELEMENT: uses the time filter defined inside the element configuration - i.e. custom metric/formula",
+        "enum": [
+          "ANALYSIS",
+          "COLUMN",
+          "ELEMENT"
+        ]
+      },
       "Container": {
         "type": "object",
         "properties": {
@@ -99,7 +108,7 @@
               "properties": {
                 "name": {
                   "type": "string",
-                  "description": "TODO: What is that? Needed?"
+                  "description": "Name of the Metric or Dimension being filtered"
                 },
                 "filterPredicate": {
                   "$ref": "#/components/schemas/FilterPredictateEnum"
@@ -115,7 +124,8 @@
                 },
                 "intern": {
                   "type": "boolean",
-                  "description": "TODO: What is that? Needed?"
+                  "description": "Indicates if filter should be prioritized, (Advanced)",
+                  "default": false
                 },
                 "value1": {
                   "type": "string"
@@ -140,9 +150,12 @@
             "$ref": "#/components/schemas/ContextEnum"
           },
           "type": {
-            "description": "TODO: What is that? Needed?",
+            "description": "Indicates how filters must be applied. TIME_ORDER is sequential, NORMAL not",
             "type": "string",
-            "enum": ["NORMAL", "TIME_ORDER"]
+            "enum": [
+              "NORMAL",
+              "TIME_ORDER"
+            ]
           },
           "inOrNotIn": {
             "$ref": "#/components/schemas/InOrNotInPredictateEnum"
@@ -174,7 +187,10 @@
                     },
                     "sortDirection": {
                       "type": "string",
-                      "enum": ["ASCENDING","DESCENDING"]
+                      "enum": [
+                        "ASCENDING",
+                        "DESCENDING"
+                      ]
                     },
                     "lowerLimit": {
                       "type": "integer"
@@ -183,19 +199,13 @@
                       "type": "integer"
                     },
                     "columnPeriod": {
-                      "type": "string",
-                      "description": "TODO: What is that? Needed?"
+                      "$ref": "#/components/schemas/ColumnPeriodEnum"
                     },
                     "scope": {
                       "$ref": "#/components/schemas/ScopeEnum"
                     },
                     "context": {
                       "$ref": "#/components/schemas/ContextEnum"
-                    },
-                    "variant": {
-                      "type": "string",
-                      "description": "TODO: What is that? Needed?",
-                      "enum": ["NORMAL"]
                     },
                     "predefinedContainer": {
                       "$ref": "#/components/schemas/Container"
@@ -254,7 +264,153 @@
         ]
       },
       "AnalysisResult": {
-        "$ref": "./schema-analysis-result.json"
+        "type": "object",
+        "properties": {
+          "calculationDataType": {
+            "type": "string",
+            "description": "DataType returned",
+            "enum": [
+              "RAW_DATA",
+              "RAW_DATA_SAMPLING"
+            ]
+          },
+          "rows": {
+            "type": "array",
+            "description": "Array of rows",
+            "items": {
+              "type": "array",
+              "description": "Array of values following the strict order of the headers",
+              "items": {
+              }
+            }
+          },
+          "rowCount": {
+            "type": "integer",
+            "description": "Number of rows returned."
+          },
+          "rowCountTotal": {
+            "type": "integer",
+            "description": "Number of rows in the whole resultSet"
+          },
+          "headers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "Name of the Dimension or Metric"
+                },
+                "alias": {
+                  "type": "string",
+                  "description": "Generated unique identifier of the column in the analysis."
+                },
+                "arrangeType": {
+                  "type": "string",
+                  "description": "Mapp identifier of the Dimension or Metric"
+                },
+                "metric": {
+                  "type": "boolean",
+                  "description": "Indicates if column is a metric"
+                },
+                "dimension": {
+                  "type": "boolean",
+                  "description": "Indicates if column is a dimension"
+                },
+                "sumPositions": {
+                  "type": "array",
+                  "description": "Indicates which rows contains a (sub)total value",
+                  "items": {
+                    "type": "integer"
+                  }
+                },
+                "pivotGroups": {
+                  "type": "array",
+                  "description": "Indicates which rows contains a grouping row",
+                  "items": {
+                    "type": "integer"
+                  }
+                },
+                "sortIndex": {
+                  "type": "integer",
+                  "description": "Indicates order of sorting when there is more than one sorting column. (starting from 0)"
+                },
+                "sortDirection": {
+                  "type": "string",
+                  "description": "Sorting direction if any",
+                  "enum": [
+                    "ASCENDING",
+                    "DESCENDING"
+                  ]
+                }
+              }
+            }
+          },
+          "columnCount": {
+            "type": "integer",
+            "description": "Number of columns"
+          },
+          "warnings": {
+            "type": "array",
+            "description": "Array of warnings occurred during calculation",
+            "items": {
+              "type": "object",
+              "description": "Warning description, specific Object for each kind of Warnings"
+            }
+          },
+          "timerange": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "description": "Analysis timerange"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp of the calculation"
+          }
+        }
+      },
+      "Issue" : {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "arrangeTypes": {
+                "type": "array",
+                "items": [
+                  {
+                    "type": "string"
+                  }
+                ]
+              },
+              "arrangeTypeTitles": {
+                "type": "array",
+                "items": [
+                  {
+                    "type": "string"
+                  }
+                ]
+              },
+              "names": {
+                "type": "array",
+                "items": [
+                  {
+                    "type": "string"
+                  }
+                ]
+              }
+            }
+          }
+        }
       },
       "Problem": {
         "type": "object",
@@ -274,6 +430,18 @@
           "detail": {
             "type": "string",
             "description": "Detailed informations about the problem"
+          },
+          "errors" : {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Issue"
+            }
+          },
+          "warnings" : {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Issue"
+            }
           }
         }
       },

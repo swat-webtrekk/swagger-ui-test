@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "Analytics API",
-    "description": "OpenAPI 3.0 Specification of Mapp Intelligence AnalyticsAPI \n\n In order to use these endpoints you authorize by using a valid OAuth clientID configured in Mapp Intelligence Settings section.",
+    "description": "OpenAPI 3.0 Specification of Mapp Intelligence AnalyticsAPI \n\n In order to use these endpoints you must authorize by using a valid OAuth clientID configured in Mapp Intelligence Settings section.",
     "version": "1.0.0",
     "contact": {
       "name": "Technical Support Mapp Digital",
@@ -625,7 +625,7 @@
           "Analysis"
         ],
         "summary": "Get query status",
-        "description": "Returns status of the analysis query. \n\n Once calculation is SUCCESS, result is  available and be retrieved by using the provided link (or calculationId).",
+        "description": "Returns status of the analysis query. \n\n Once calculation is SUCCESS, result is  available and can be retrieved by using the provided link (or calculationId).",
         "externalDocs": {
           "url": "https://documentation.mapp.com"
         },

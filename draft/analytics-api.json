@@ -5,9 +5,8 @@
     "description": "OpenAPI 3.0 Specification of Mapp Intelligence AnalyticsAPI",
     "version": "1.0.0",
     "contact": {
-      "name": "Mapp",
-      "url": "https://www.mapp.com",
-      "email": "swat@webtrekk.com"
+      "name": "Technical Support Mapp Digital",
+      "url": "https://mapp.com/tech-support/"
     }
   },
   "servers": [
@@ -17,14 +16,7 @@
     }
   ],
   "tags": [
-    {
-      "name": "Query Management",
-      "description": "Analysis query lifecycle"
-    },
-    {
-      "name": "Data Delivery",
-      "description": "Provide analysis data"
-    }
+    "Analysis"
   ],
   "components": {
     "securitySchemes": {
@@ -536,9 +528,8 @@
     "/analysis-query": {
       "post": {
         "tags": [
-          "Query Management"
         ],
-        "summary": "Submit analysis query",
+        "summary": "Create calculation query",
         "description": "Long description Submit an analysis query",
         "externalDocs": {
           "url": "https://documentation.mapp.com"
@@ -628,7 +619,6 @@
     "/analysis-query/{correlationId}": {
       "get": {
         "tags": [
-          "Query Management"
         ],
         "summary": "Get query status",
         "description": "Long description",
@@ -685,7 +675,6 @@
       },
       "delete": {
         "tags": [
-          "Query Management"
         ],
         "summary": "Cancel query",
         "description": "Long description",
@@ -716,9 +705,8 @@
     "/analysis-result/{calculationId}": {
       "get": {
         "tags": [
-          "Data Delivery"
         ],
-        "summary": "Download analysis data",
+        "summary": "Get analysis result",
         "description": "Long description",
         "externalDocs": {
           "url": "https://documentation.mapp.com"

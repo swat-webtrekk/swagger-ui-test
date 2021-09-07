@@ -11,8 +11,8 @@
   },
   "servers": [
     {
-      "url": "https://intelligence.eu.mapp.com/analytics/api/",
-      "description": "Production"
+      "url": "https://analytics-qa-01.nbg.webtrekk.com/analytics-service/intelligence-api/",
+      "description": "QA"
     }
   ],
   "tags": [
@@ -26,7 +26,7 @@
         "type": "oauth2",
         "flows": {
           "clientCredentials": {
-            "tokenUrl": "https://analytics-int-01.nbg.webtrekk.com/analytics-service/intelligence-api/oauth/token",
+            "tokenUrl": "https://analytics-qa-01.nbg.webtrekk.com/analytics-service/intelligence-api/oauth/token",
             "scopes": {
               "mapp.intelligence-api": "Use intelligence APIs"
             }

@@ -661,6 +661,30 @@
           "name",
           "dynamicFilter"
         ]
+      },
+      "AnalysisUsage": {
+        "title": "AnalysisUsage",
+        "type": "object",
+        "properties": {
+          "calculationsCount": {
+            "type": "integer"
+          },
+          "maxCalculationsAllowed": {
+            "type": "integer"
+          },
+          "month": {
+            "type": "integer"
+          },
+          "year": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "calculationsCount",
+          "maxCalculationsAllowed",
+          "month",
+          "year"
+        ]
       }
     },
     "responses": {
@@ -935,6 +959,43 @@
           },
           "404": {
             "$ref": "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/analysis-usage/current": {
+      "get": {
+        "tags": [
+          "Analysis"
+        ],
+        "summary": "Get number of analysis done for current Month",
+        "description": "Get number of analysis done for current Month",
+        "externalDocs": {
+          "url": "https://documentation.mapp.com"
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnalysisUsage"
+                },
+                "examples": {
+                  "AnalysisUsage": {
+                    "value": {
+                      "calculationsCount": 4012,
+                      "maxCalculationsAllowed": 310000,
+                      "month": 1,
+                      "year": 2022
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
           }
         }
       }

@@ -1,0 +1,237 @@
+{
+  "value": {
+  "metrics": [
+    {
+      "name": "alexaRanking",
+      "context": "NONE",
+      "dataType": "NUMBER",
+      "title": "Alexa Ranking",
+      "elementType": "DEFAULT_METRIC",
+      "metricDisplayType": "NORMAL"
+    },
+    {
+      "name": "attribution_1_order_qty",
+      "context": "ACTION",
+      "dataType": "NUMBER",
+      "title": "Qty Orders (Attribution last session, external), Order",
+      "elementType": "CAMPAIGNS_ATTRIBUTION",
+      "metricDisplayType": "NORMAL"
+    },
+    {
+      "name": "custom_metric_1000853",
+      "context": "SESSION",
+      "dataType": "NUMBER",
+      "title": "Android Users (Segment)",
+      "elementType": "CUSTOM_METRIC",
+      "metricDisplayType": "NORMAL"
+    },
+    {
+      "name": "media_chapter_1",
+      "context": "ATOMIC",
+      "dataType": "NUMBER",
+      "title": "Media Chapter 1",
+      "elementType": "DEFAULT_METRIC",
+      "metricDisplayType": "NORMAL"
+    },
+    {
+      "name": "page_category_number_13_sum",
+      "context": "NONE",
+      "dataType": "NUMBER",
+      "title": "Social Metrics",
+      "elementType": "CUSTOM_CATEGORY",
+      "metricDisplayType": "NORMAL"
+    },
+    {
+      "name": "products_viewed_qty",
+      "context": "ATOMIC",
+      "dataType": "NUMBER",
+      "title": "Qty Product Views",
+      "elementType": "DEFAULT_METRIC",
+      "metricDisplayType": "NORMAL"
+    },
+    {
+      "name": "session_parameter_text_10_qty",
+      "context": "SESSION",
+      "dataType": "NUMBER",
+      "title": "Qty Session parameter text with a fancy long title abc",
+      "elementType": "CUSTOM_PARAMETER",
+      "metricDisplayType": "NORMAL"
+    }
+  ],
+  "dimensions": [
+    {
+      "name": "attribution_1",
+      "context": "NONE",
+      "dataType": "NUMBER",
+      "title": "Attribution (last session, external) of Order",
+      "elementType": "CAMPAIGNS_ATTRIBUTION",
+      "mapping": {
+        "": "No Filter",
+        "*": "All"
+      }
+    },
+    {
+      "name": "attribution_2",
+      "context": "NONE",
+      "dataType": "NUMBER",
+      "title": "Attribution (multiple, external) of Order",
+      "elementType": "CAMPAIGNS_ATTRIBUTION",
+      "mapping": {
+        "": "No Filter",
+        "*": "All"
+      }
+    },
+    {
+      "name": "device_deviceClass",
+      "context": "SESSION",
+      "dataType": "NUMBER",
+      "title": "Device Class",
+      "elementType": "DEFAULT_DIMENSION",
+      "mapping": {
+        "": "No filter",
+        "0": "PC / Laptop",
+        "1": "Smartphone",
+        "2": "Tablet",
+        "3": "TV",
+        "4": "Console",
+        "5": "Smartwatch",
+        "6": "E-Reader",
+        "7": "Mediahub",
+        "8": "other",
+        "1000": "unknown"
+      }
+    },
+    {
+      "name": "device_model",
+      "context": "SESSION",
+      "dataType": "STRING",
+      "title": "Device Model",
+      "elementType": "DEFAULT_DIMENSION"
+    },
+    {
+      "name": "process_2",
+      "context": "PAGE",
+      "dataType": "NUMBER",
+      "title": "Kaufprozess Process Steps",
+      "elementType": "CUSTOM_PROCESS",
+      "mapping": {
+        "0": "Startseite",
+        "": "No filter",
+        "1": "Produktansicht",
+        "2": "Warenkorb",
+        "3": "Abschluss",
+        "*": "All Process Steps"
+      }
+    },
+    {
+      "name": "user_category_text_37",
+      "context": "SESSION",
+      "dataType": "STRING",
+      "title": "jpa AM-180 30",
+      "elementType": "CUSTOM_CATEGORY"
+    },
+    {
+      "name": "user_country",
+      "context": "SESSION",
+      "dataType": "STRING",
+      "title": "URM - Country",
+      "elementType": "DEFAULT_DIMENSION"
+    },
+    {
+      "name": "user_gender",
+      "context": "SESSION",
+      "dataType": "NUMBER",
+      "title": "URM - Gender",
+      "elementType": "DEFAULT_DIMENSION",
+      "mapping": {
+        "": "No filter",
+        "0": "unknown",
+        "1": "Man",
+        "2": "Woman"
+      }
+    },
+    {
+      "name": "user_id",
+      "context": "SESSION",
+      "dataType": "STRING",
+      "title": "URM - Visitor Id",
+      "elementType": "DEFAULT_DIMENSION"
+    },
+    {
+      "name": "user_lastVisit",
+      "context": "SESSION",
+      "dataType": "NUMBER",
+      "title": "URM - Last Visit",
+      "elementType": "DEFAULT_DIMENSION",
+      "mapping": {
+        "": "No filter",
+        "0": "No",
+        "1": "Yes"
+      }
+    },
+    {
+      "name": "user_lastVisitWithPurchase",
+      "context": "SESSION",
+      "dataType": "NUMBER",
+      "title": "URM - Last Visit with a Purchase",
+      "elementType": "DEFAULT_DIMENSION",
+      "mapping": {
+        "": "No filter",
+        "0": "No",
+        "1": "Yes"
+      }
+    },
+    {
+      "name": "user_macroStatus",
+      "context": "SESSION",
+      "dataType": "NUMBER",
+      "title": "URM - Customer Macro Status",
+      "elementType": "DEFAULT_DIMENSION",
+      "mapping": {
+        "": "No filter",
+        "0": "unknown",
+        "1": "Offsite",
+        "2": "Onsite",
+        "3": "Product view",
+        "4": "Abandoned basket",
+        "5": "Registration",
+        "6": "New Customer",
+        "7": "Returning buyer"
+      }
+    },
+    {
+      "name": "visitors_newVsReturning",
+      "context": "SESSION",
+      "dataType": "NUMBER",
+      "title": "New vs. Returning",
+      "elementType": "DEFAULT_DIMENSION",
+      "mapping": {
+        "": "No filter",
+        "0": "Returning",
+        "1": "New",
+        "2": "Unknown"
+      }
+    },
+    {
+      "name": "websiteGoals",
+      "context": "ACTION",
+      "dataType": "NUMBER",
+      "title": "Website Goals",
+      "elementType": "CUSTOM_WEBSITE_GOALS",
+      "mapping": {
+        "": "No filter",
+        "1": "Order",
+        "2": "Test 1 (Deleted)",
+        "13": "Bge test goal",
+        "3": "Download (Deleted)",
+        "4": "Produkt in den Warenkorb gelegt (Deleted)",
+        "15": "parameter stimmung goal (Deleted)",
+        "5": "Testwebsiiteziekl (Deleted)",
+        "6": "Registration",
+        "17": "Para Stimmung GOAL",
+        "7": "wefwf (Deleted)",
+        "8": "StimmungTest (Deleted)"
+      }
+    }
+  ]
+}}

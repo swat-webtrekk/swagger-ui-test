@@ -17,7 +17,12 @@
   ],
   "tags": [
     {
-      "name": "Analysis"
+      "name": "Analysis",
+      "description": "Submit analysis and get data"
+    },
+    {
+      "name": "Available Objects",
+      "description": "Get informations about available objects you can use to build Analysis"
     }
   ],
   "components": {
@@ -369,7 +374,7 @@
           }
         }
       },
-      "Issue" : {
+      "Issue": {
         "type": "object",
         "properties": {
           "name": {
@@ -425,13 +430,13 @@
             "type": "string",
             "description": "Detailed informations about the problem"
           },
-          "errors" : {
+          "errors": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Issue"
             }
           },
-          "warnings" : {
+          "warnings": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Issue"
@@ -472,6 +477,190 @@
             }
           }
         }
+      },
+      "DataTypeEnum": {
+        "type": "string",
+        "enum": [
+          "STRING",
+          "NUMBER",
+          "GENERIC"
+        ]
+      },
+      "ElementTypeEnum": {
+        "type": "string",
+        "enum": [
+          "CAMPAIGNS_ATTRIBUTION",
+          "CUSTOM_CATEGORY",
+          "CUSTOM_FORMULA",
+          "CUSTOM_METRIC",
+          "CUSTOM_PARAMETER",
+          "CUSTOM_PROCESS",
+          "CUSTOM_SOURCE",
+          "CUSTOM_VISITOR_GROUPS_TRAFFIC",
+          "CUSTOM_WEBSITE_GOALS",
+          "DEFAULT_DIMENSION",
+          "DEFAULT_METRIC",
+          "PREDEFINED_FORMULA",
+          "PREDEFINED_METRIC"
+        ]
+      },
+      "Metric": {
+        "title": "MetricObject",
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "dataType": {
+            "$ref": "#/components/schemas/DataTypeEnum"
+          },
+          "title": {
+            "type": "string"
+          },
+          "elementType": {
+            "$ref": "#/components/schemas/ElementTypeEnum"
+          },
+          "metricDisplayType": {
+            "type": "string"
+          },
+          "context": {
+            "$ref": "#/components/schemas/ContextEnum"
+          }
+        },
+        "required": [
+          "name",
+          "dataType",
+          "title",
+          "elementType",
+          "metricDisplayType"
+        ]
+      },
+      "Dimension": {
+        "title": "DimensionObject",
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "dataType": {
+            "$ref": "#/components/schemas/DataTypeEnum"
+          },
+          "title": {
+            "type": "string"
+          },
+          "elementType": {
+            "$ref": "#/components/schemas/ElementTypeEnum"
+          },
+          "context": {
+            "$ref": "#/components/schemas/ContextEnum"
+          },
+          "mapping": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "timeFormatPattern": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "dataType",
+          "title",
+          "elementType"
+        ]
+      },
+      "QueryObjects": {
+        "title": "QueryObjects",
+        "type": "object",
+        "properties": {
+          "metrics": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Metric"
+            }
+          },
+          "dimensions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Dimension"
+            }
+          }
+        },
+        "required": [
+          "metrics",
+          "dimensions"
+        ]
+      },
+      "SegmentDefinition": {
+        "title": "SegmentDefinition",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "description"
+        ]
+      },
+      "DynamicTimeFilterDefinition": {
+        "title": "SegmentDefinition",
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "dynamicFilter": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "filterPredicate": {
+                "$ref": "#/components/schemas/FilterPredictateEnum"
+              },
+              "connector": {
+                "$ref": "#/components/schemas/ConnectorPredictateEnum"
+              },
+              "context": {
+                "$ref": "#/components/schemas/ContextEnum"
+              },
+              "value1": {
+                "type": "string"
+              },
+              "value2": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "name",
+              "connector",
+              "filterPredicate",
+              "value1",
+              "value2",
+              "context"
+            ]
+          }
+        },
+
+        "required": [
+          "title",
+          "name",
+          "dynamicFilter"
+        ]
       }
     },
     "responses": {
@@ -746,6 +935,166 @@
           },
           "404": {
             "$ref": "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/query-objects": {
+      "get": {
+        "tags": [
+          "Available Objects"
+        ],
+        "summary": "List all available dimensions and metrics",
+        "description": "List all available dimensions and metrics",
+        "externalDocs": {
+          "url": "https://documentation.mapp.com"
+        },
+        "parameters": [
+          {
+            "name": "language",
+            "in": "query",
+            "description": "Optional standard ISO-639-1 language code for translation (when applicable).\n\nOnly \"de\" and \"en\" supported for the moment. \n\nDefault is  \"en\"",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QueryObjects"
+                },
+                "examples": {
+                  "Query Objects": {
+                    "$ref": "./query-objects.json"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        }
+      }
+    },
+    "/segments": {
+      "get": {
+        "tags": [
+          "Available Objects"
+        ],
+        "summary": "List all available segments",
+        "description": "List all available segments",
+        "externalDocs": {
+          "url": "https://documentation.mapp.com"
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SegmentDefinition"
+                },
+                "examples": {
+                  "Segments": {
+                    "value": [
+                      {
+                        "id": 67,
+                        "title": "Social media Besucher",
+                        "description": "Besucher, die über Social Media Seiten kamen. Beinhaltet:\r\nBlogs, Foren, Youtube, digg, Twitter, Facebook, Myspace, Studivz, Meinvz, Twitter, URL-Verkürzer, Digg, Yigg, Social Bookmarkdienste und noch einige mehr.\r\nForen"
+                      },
+                      {
+                        "id": 95,
+                        "title": "Returning Visitor",
+                        "description": "User mit mindestens 5 Visits"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        }
+      }
+    },
+    "/dynamic-timefilters": {
+      "get": {
+        "tags": [
+          "Available Objects"
+        ],
+        "summary": "List all available dynamic time filters",
+        "description": "List all available dynamic time filters",
+        "externalDocs": {
+          "url": "https://documentation.mapp.com"
+        },
+        "parameters": [
+          {
+            "name": "language",
+            "in": "query",
+            "description": "Optional standard ISO-639-1 language code for translation (when applicable).\n\nOnly \"de\" and \"en\" supported for the moment. \n\nDefault is  \"en\"",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DynamicTimeFilterDefinition"
+                },
+                "examples": {
+                  "Segments": {
+                    "value": [
+                      {
+                        "title": "Today",
+                        "name": "today",
+                        "dynamicFilter": {
+                          "name": "time_dynamic",
+                          "connector": "AND",
+                          "filterPredicate": "LIKE",
+                          "value1": "today",
+                          "value2": "",
+                          "context": "NONE"
+                        }
+                      },
+                      {
+                        "title": "Today, 7 days ago",
+                        "name": "before_7_days",
+                        "dynamicFilter": {
+                          "name": "time_dynamic",
+                          "connector": "AND",
+                          "filterPredicate": "LIKE",
+                          "value1": "before_7_days",
+                          "value2": "",
+                          "context": "NONE"
+                        }
+                      },
+                      {
+                        "title": "Today, 14 days ago",
+                        "name": "before_14_days",
+                        "dynamicFilter": {
+                          "name": "time_dynamic",
+                          "connector": "AND",
+                          "filterPredicate": "LIKE",
+                          "value1": "before_14_days",
+                          "value2": "",
+                          "context": "NONE"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
           }
         }
       }

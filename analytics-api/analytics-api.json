@@ -42,6 +42,7 @@
     "schemas": {
       "FilterPredictateEnum": {
         "type": "string",
+        "description": "Filter predicates",
         "enum": [
           "EQUAL",
           "UNEQUAL",
@@ -56,6 +57,7 @@
       },
       "ConnectorPredictateEnum": {
         "type": "string",
+        "description": "Connectors",
         "enum": [
           "AND",
           "OR"
@@ -70,6 +72,7 @@
       },
       "ContextEnum": {
         "type": "string",
+        "description": "Context",
         "enum": [
           "VISITOR",
           "SESSION",
@@ -480,14 +483,28 @@
       },
       "DataTypeEnum": {
         "type": "string",
+        "description": "Type of data",
         "enum": [
           "STRING",
           "NUMBER",
           "GENERIC"
         ]
       },
+      "DisplayTypeEnum": {
+        "type": "string",
+        "description": "Indicate how the data should be displayed",
+        "enum": [
+          "NORMAL",
+          "TIME",
+          "CURRENCY",
+          "DISTRIBUTION",
+          "COMPARE"
+
+        ]
+      },
       "ElementTypeEnum": {
         "type": "string",
+        "description": "Type of element",
         "enum": [
           "CAMPAIGNS_ATTRIBUTION",
           "CUSTOM_CATEGORY",
@@ -505,23 +522,26 @@
         ]
       },
       "Metric": {
-        "title": "MetricObject",
+        "title": "Metric",
         "type": "object",
+        "description": "Description of a metric",
         "properties": {
           "name": {
-            "type": "string"
+            "type": "string",
+            "description": "API name of the metric"
           },
           "dataType": {
             "$ref": "#/components/schemas/DataTypeEnum"
           },
           "title": {
-            "type": "string"
+            "type": "string",
+            "description": "Human readable name of the metric. Localized"
           },
           "elementType": {
             "$ref": "#/components/schemas/ElementTypeEnum"
           },
           "metricDisplayType": {
-            "type": "string"
+            "$ref": "#/components/schemas/DisplayTypeEnum"
           },
           "context": {
             "$ref": "#/components/schemas/ContextEnum"
@@ -538,15 +558,18 @@
       "Dimension": {
         "title": "DimensionObject",
         "type": "object",
+        "description": "Description of a Dimension element",
         "properties": {
           "name": {
-            "type": "string"
+            "type": "string",
+            "description": "API name of the dimension"
           },
           "dataType": {
             "$ref": "#/components/schemas/DataTypeEnum"
           },
           "title": {
-            "type": "string"
+            "type": "string",
+            "description": "Human readable name of the metric. Localized"
           },
           "elementType": {
             "$ref": "#/components/schemas/ElementTypeEnum"
@@ -556,11 +579,13 @@
           },
           "mapping": {
             "type": "object",
+            "description": "Optional list of Mapping values",
             "additionalProperties": {
               "type": "string"
             }
           },
           "timeFormatPattern": {
+            "description": "Standard datetime pattern. Indicates that current STRING represents a Date",
             "type": "string"
           }
         },
@@ -595,16 +620,20 @@
       },
       "SegmentDefinition": {
         "title": "SegmentDefinition",
+        "description": "User segment",
         "type": "object",
         "properties": {
           "id": {
-            "type": "integer"
+            "type": "integer",
+            "description": "ID of the segment to be used in analysis"
           },
           "title": {
-            "type": "string"
+            "type": "string",
+            "description": "Name of the segment"
           },
           "description": {
-            "type": "string"
+            "type": "string",
+            "description": "Description of the segment"
           }
         },
         "required": [
@@ -614,20 +643,25 @@
         ]
       },
       "DynamicTimeFilterDefinition": {
-        "title": "SegmentDefinition",
+        "title": "DynamicTimeFilterDefinition",
+        "description": "Dynamic Time Filter",
         "type": "object",
         "properties": {
           "title": {
-            "type": "string"
+            "type": "string",
+            "description": "Human readable description of the dynamic time filter (localized)"
           },
           "name": {
-            "type": "string"
+            "type": "string",
+            "description": "API name of the filter value"
           },
           "dynamicFilter": {
             "type": "object",
+            "description": "Snippet code which can be used in analysis",
             "properties": {
               "name": {
-                "type": "string"
+                "type": "string",
+                "description": "API Name of the filtered dimension"
               },
               "filterPredicate": {
                 "$ref": "#/components/schemas/FilterPredictateEnum"
@@ -639,10 +673,12 @@
                 "$ref": "#/components/schemas/ContextEnum"
               },
               "value1": {
-                "type": "string"
+                "type": "string",
+                "description": "Value to be filtered on."
               },
               "value2": {
-                "type": "string"
+                "type": "string",
+                "description": "Second value to be filtered on. Only relevant for BETWEEN."
               }
             },
             "required": [
@@ -664,19 +700,24 @@
       },
       "AnalysisUsage": {
         "title": "AnalysisUsage",
+        "description": "Analysis Usage for a given period",
         "type": "object",
         "properties": {
           "calculationsCount": {
-            "type": "integer"
+            "type": "integer",
+            "description": "Number of calculation for the current period"
           },
           "maxCalculationsAllowed": {
-            "type": "integer"
+            "type": "integer",
+            "description": "Max number of allowed of calculation per Month as defined in contract"
           },
           "month": {
-            "type": "integer"
+            "type": "integer",
+            "description": "month of the current period"
           },
           "year": {
-            "type": "integer"
+            "type": "integer",
+            "description": "Year of the current period"
           }
         },
         "required": [
@@ -968,8 +1009,8 @@
         "tags": [
           "Analysis"
         ],
-        "summary": "Get number of analysis done for current Month",
-        "description": "Get number of analysis done for current Month",
+        "summary": "Get number of analysis done for current month",
+        "description": "Get number of analysis done for current month",
         "externalDocs": {
           "url": "https://documentation.mapp.com"
         },
@@ -1088,8 +1129,8 @@
         "tags": [
           "Available Objects"
         ],
-        "summary": "List all available dynamic time filters",
-        "description": "List all available dynamic time filters",
+        "summary": "List all available dynamic timefilters",
+        "description": "List all available dynamic timefilter value.",
         "externalDocs": {
           "url": "https://documentation.mapp.com"
         },
@@ -1110,7 +1151,7 @@
                   "$ref": "#/components/schemas/DynamicTimeFilterDefinition"
                 },
                 "examples": {
-                  "Segments": {
+                  "DynamicTimeFilters": {
                     "value": [
                       {
                         "title": "Today",

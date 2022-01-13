@@ -72,7 +72,7 @@
       },
       "ContextEnum": {
         "type": "string",
-        "description": "Context",
+        "description": "Context to evaluate the metric/dimension. If context property is not given or empty the default context of the object will be used. The default context can be identified from the context property in the response list of /query-objects.",
         "enum": [
           "VISITOR",
           "SESSION",

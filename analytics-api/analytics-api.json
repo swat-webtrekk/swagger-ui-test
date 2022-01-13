@@ -602,12 +602,14 @@
         "properties": {
           "metrics": {
             "type": "array",
+            "description": "List of available metrics",
             "items": {
               "$ref": "#/components/schemas/Metric"
             }
           },
           "dimensions": {
             "type": "array",
+            "description": "List of available dimensions",
             "items": {
               "$ref": "#/components/schemas/Dimension"
             }

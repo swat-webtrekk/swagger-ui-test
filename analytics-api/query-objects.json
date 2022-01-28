@@ -48,14 +48,6 @@
       "title": "Qty Product Views",
       "elementType": "DEFAULT_METRIC",
       "metricDisplayType": "NORMAL"
-    },
-    {
-      "name": "session_parameter_text_10_qty",
-      "context": "SESSION",
-      "dataType": "NUMBER",
-      "title": "Qty Session parameter text with a fancy long title abc",
-      "elementType": "CUSTOM_PARAMETER",
-      "metricDisplayType": "NORMAL"
     }
   ],
   "dimensions": [
@@ -107,28 +99,6 @@
       "dataType": "STRING",
       "title": "Device Model",
       "elementType": "DEFAULT_DIMENSION"
-    },
-    {
-      "name": "process_2",
-      "context": "PAGE",
-      "dataType": "NUMBER",
-      "title": "Kaufprozess Process Steps",
-      "elementType": "CUSTOM_PROCESS",
-      "mapping": {
-        "0": "Startseite",
-        "": "No filter",
-        "1": "Produktansicht",
-        "2": "Warenkorb",
-        "3": "Abschluss",
-        "*": "All Process Steps"
-      }
-    },
-    {
-      "name": "user_category_text_37",
-      "context": "SESSION",
-      "dataType": "STRING",
-      "title": "jpa AM-180 30",
-      "elementType": "CUSTOM_CATEGORY"
     },
     {
       "name": "user_country",
@@ -210,27 +180,6 @@
         "0": "Returning",
         "1": "New",
         "2": "Unknown"
-      }
-    },
-    {
-      "name": "websiteGoals",
-      "context": "ACTION",
-      "dataType": "NUMBER",
-      "title": "Website Goals",
-      "elementType": "CUSTOM_WEBSITE_GOALS",
-      "mapping": {
-        "": "No filter",
-        "1": "Order",
-        "2": "Test 1 (Deleted)",
-        "13": "Bge test goal",
-        "3": "Download (Deleted)",
-        "4": "Produkt in den Warenkorb gelegt (Deleted)",
-        "15": "parameter stimmung goal (Deleted)",
-        "5": "Testwebsiiteziekl (Deleted)",
-        "6": "Registration",
-        "17": "Para Stimmung GOAL",
-        "7": "wefwf (Deleted)",
-        "8": "StimmungTest (Deleted)"
       }
     }
   ]

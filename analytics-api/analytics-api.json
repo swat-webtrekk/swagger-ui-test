@@ -1106,13 +1106,13 @@
                     "value": [
                       {
                         "id": 67,
-                        "title": "Social media Besucher",
-                        "description": "Besucher, die über Social Media Seiten kamen. Beinhaltet:\r\nBlogs, Foren, Youtube, digg, Twitter, Facebook, Myspace, Studivz, Meinvz, Twitter, URL-Verkürzer, Digg, Yigg, Social Bookmarkdienste und noch einige mehr.\r\nForen"
+                        "title": "Social media Visitor",
+                        "description": "Visitor which came from Social Media"
                       },
                       {
                         "id": 95,
                         "title": "Returning Visitor",
-                        "description": "User mit mindestens 5 Visits"
+                        "description": "User with at least 5 Visits"
                       }
                     ]
                   }

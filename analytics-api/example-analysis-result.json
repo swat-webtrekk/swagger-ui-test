@@ -313,7 +313,7 @@
           28
         ],
         "name": "time_days",
-        "metric": null,
+        "metric": false,
         "dimension": true,
         "sortIndex": 0,
         "sortDirection": "ASCENDING"
@@ -332,64 +332,50 @@
           28
         ],
         "name": "os_vendor",
-        "metric": null,
-        "dimension": true,
-        "sortIndex": null,
-        "sortDirection": null
+        "metric": false,
+        "dimension": true
       },
       {
         "alias": "visits|0",
         "arrangeType": "visits",
         "name": "visits",
         "metric": true,
-        "dimension": null,
-        "sortIndex": null,
-        "sortDirection": null
+        "dimension": false
       },
       {
         "alias": "page_impressions|0",
         "arrangeType": "page_impressions",
         "name": "pages_pageImpressions",
         "metric": true,
-        "dimension": null,
-        "sortIndex": null,
-        "sortDirection": null
+        "dimension": false
       },
       {
         "alias": "predefined_formula_new_visitor_rate|0",
         "arrangeType": "predefined_formula_new_visitor_rate",
         "name": "visits_newShare",
         "metric": true,
-        "dimension": null,
-        "sortIndex": null,
-        "sortDirection": null
+        "dimension": false
       },
       {
         "alias": "predefined_formula_avg_visit_duration|0",
         "arrangeType": "predefined_formula_avg_visit_duration",
         "name": "visit_duration_avg",
         "metric": true,
-        "dimension": null,
-        "sortIndex": null,
-        "sortDirection": null
+        "dimension": false
       },
       {
         "alias": "predefined_formula_bounce_rate|0",
         "arrangeType": "predefined_formula_bounce_rate",
         "name": "visits_bounceRate",
         "metric": true,
-        "dimension": null,
-        "sortIndex": null,
-        "sortDirection": null
+        "dimension": false
       },
       {
         "alias": "visits|1",
         "arrangeType": "visits",
         "name": "visits",
         "metric": true,
-        "dimension": null,
-        "sortIndex": null,
-        "sortDirection": null
+        "dimension": false
       }
     ],
     "columnCount": 8,

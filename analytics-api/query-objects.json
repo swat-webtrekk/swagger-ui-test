@@ -5,6 +5,7 @@
       "name": "alexaRanking",
       "context": "NONE",
       "dataType": "NUMBER",
+      "sortable": true,
       "title": "Alexa Ranking",
       "elementType": "DEFAULT_METRIC",
       "metricDisplayType": "NORMAL"
@@ -13,6 +14,7 @@
       "name": "attribution_1_order_qty",
       "context": "ACTION",
       "dataType": "NUMBER",
+      "sortable": true,
       "title": "Qty Orders (Attribution last session, external), Order",
       "elementType": "CAMPAIGNS_ATTRIBUTION",
       "metricDisplayType": "NORMAL"
@@ -21,6 +23,7 @@
       "name": "custom_metric_1000853",
       "context": "SESSION",
       "dataType": "NUMBER",
+      "sortable": true,
       "title": "Android Users (Segment)",
       "elementType": "CUSTOM_METRIC",
       "metricDisplayType": "NORMAL"
@@ -29,6 +32,7 @@
       "name": "media_chapter_1",
       "context": "ATOMIC",
       "dataType": "NUMBER",
+      "sortable": true,
       "title": "Media Chapter 1",
       "elementType": "DEFAULT_METRIC",
       "metricDisplayType": "NORMAL"
@@ -37,6 +41,7 @@
       "name": "page_category_number_13_sum",
       "context": "NONE",
       "dataType": "NUMBER",
+      "sortable": true,
       "title": "Social Metrics",
       "elementType": "CUSTOM_CATEGORY",
       "metricDisplayType": "NORMAL"
@@ -45,6 +50,7 @@
       "name": "products_viewed_qty",
       "context": "ATOMIC",
       "dataType": "NUMBER",
+      "sortable": true,
       "title": "Qty Product Views",
       "elementType": "DEFAULT_METRIC",
       "metricDisplayType": "NORMAL"
@@ -55,6 +61,7 @@
       "name": "attribution_1",
       "context": "NONE",
       "dataType": "NUMBER",
+      "sortable": true,
       "title": "Attribution (last session, external) of Order",
       "elementType": "CAMPAIGNS_ATTRIBUTION",
       "mapping": {
@@ -66,6 +73,7 @@
       "name": "attribution_2",
       "context": "NONE",
       "dataType": "NUMBER",
+      "sortable": true,
       "title": "Attribution (multiple, external) of Order",
       "elementType": "CAMPAIGNS_ATTRIBUTION",
       "mapping": {
@@ -77,6 +85,7 @@
       "name": "device_deviceClass",
       "context": "SESSION",
       "dataType": "NUMBER",
+      "sortable": true,
       "title": "Device Class",
       "elementType": "DEFAULT_DIMENSION",
       "mapping": {
@@ -97,6 +106,7 @@
       "name": "device_model",
       "context": "SESSION",
       "dataType": "STRING",
+      "sortable": false,
       "title": "Device Model",
       "elementType": "DEFAULT_DIMENSION"
     },
@@ -104,6 +114,7 @@
       "name": "user_country",
       "context": "SESSION",
       "dataType": "STRING",
+      "sortable": false,
       "title": "URM - Country",
       "elementType": "DEFAULT_DIMENSION"
     },
@@ -111,6 +122,7 @@
       "name": "user_gender",
       "context": "SESSION",
       "dataType": "NUMBER",
+      "sortable": true,
       "title": "URM - Gender",
       "elementType": "DEFAULT_DIMENSION",
       "mapping": {
@@ -124,6 +136,7 @@
       "name": "user_id",
       "context": "SESSION",
       "dataType": "STRING",
+      "sortable": false,
       "title": "URM - Visitor Id",
       "elementType": "DEFAULT_DIMENSION"
     },
@@ -131,6 +144,7 @@
       "name": "user_lastVisit",
       "context": "SESSION",
       "dataType": "NUMBER",
+      "sortable": true,
       "title": "URM - Last Visit",
       "elementType": "DEFAULT_DIMENSION",
       "mapping": {
@@ -143,6 +157,7 @@
       "name": "user_lastVisitWithPurchase",
       "context": "SESSION",
       "dataType": "NUMBER",
+      "sortable": true,
       "title": "URM - Last Visit with a Purchase",
       "elementType": "DEFAULT_DIMENSION",
       "mapping": {
@@ -155,6 +170,7 @@
       "name": "user_macroStatus",
       "context": "SESSION",
       "dataType": "NUMBER",
+      "sortable": true,
       "title": "URM - Customer Macro Status",
       "elementType": "DEFAULT_DIMENSION",
       "mapping": {
@@ -173,6 +189,7 @@
       "name": "visitors_newVsReturning",
       "context": "SESSION",
       "dataType": "NUMBER",
+      "sortable": true,
       "title": "New vs. Returning",
       "elementType": "DEFAULT_DIMENSION",
       "mapping": {

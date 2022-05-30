@@ -287,6 +287,7 @@ components:
             | SortingEnforced |  Sorting criteria has been added automatically | List of objects that were sorted automatically in _aliases_ array. |
             | NoSortingDefined |  Sorting criteria is required for some dimensions. | List of dimensions requiring a sorting in _names_ array. |
             | SortingLimitExceeded | 3 sorting criteria are allowed. All additional sorting criteria have been omitted.| List of columns ignored for sorting in _aliases_ array. |
+            | SortingRemoved | A requested sorting criteria has been removed | List of objects that were removed automatically in _aliases_ array. |
             | TodayRemoved | Today date has been removed from calculation time range because the selected datasource does not contain it. | daysInDataSource, todayDate|
           enum:
             - FilterLogicalCubeMismatch
@@ -294,6 +295,7 @@ components:
             - SortingEnforced
             - NoSortingDefined
             - SortingLimitExceeded
+            - SortingRemoved
             - TodayRemoved
         parameters:
           type: object

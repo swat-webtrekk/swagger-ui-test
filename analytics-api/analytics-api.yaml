@@ -327,12 +327,14 @@ components:
         name:
           type: string
           description: |-
-            Error codes:
-            - UnmappedName: Object name cannot be found. List of objects not found in _names_ array.
-            - PivotIncompatibleMetric: Metric not usable in Pivot detected. List of incompatible Metrics in _names_ array.
-            - PivotIncompatibleDimension: Dimension not usable in Pivot detected. List of incompatible Dimensions in _names_ array.
-            - AnalysisLogicalCubeMismatch: All Dimensions and Metrics are not compatible. List of incompatible objects in _names_ array.
-            - InvalidSortingCriteria: Sorting is applied on a non-sortable object. List of invalid sorted objects in _names_ array.
+            Each error has specific properties described in following table:
+            | Error| Description | Relevant parameters |
+            | ---------------- | ------------| -----------------------------------|
+            | UnmappedName | At least one object name cannot be found. | List of objects not found in _names_ array. |
+            | PivotIncompatibleMetric | Metric not usable in Pivot detected.| List of incompatible Metrics in _names_ array. |
+            | PivotIncompatibleDimension |Dimension not usable in Pivot detected. | List of incompatible Dimensions in _names_ array. |
+            | AnalysisLogicalCubeMismatch | All Dimensions and Metrics are not compatible. | List of incompatible objects in _names_ array. |
+            | InvalidSortingCriteria | Sorting is applied on a non-sortable object.| List of invalid sorted objects in _names_ array. |
           enum:
             - UnmappedName
             - PivotIncompatibleMetric

@@ -166,6 +166,9 @@ components:
                 - LIST
                 - PIVOT
                 - PIVOT_AS_LIST
+                - KPI
+                - SPARKLINE
+                - COMPARISON
             predefinedContainer:
               $ref: '#/components/schemas/Container'
             predefinedSegmentConnections:

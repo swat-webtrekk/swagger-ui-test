@@ -266,12 +266,11 @@ components:
             $ref: '#/components/schemas/Warning'
         timerange:
           type: array
+          description: time range boundaries with format yyyy-MM-dd HH:mm:ss
           minItems: 2
           maxItems: 2
           items:
             type: string
-            format: date-time
-          description: Analysis timerange
         timestamp:
           type: string
           format: date-time

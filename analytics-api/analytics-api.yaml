@@ -133,11 +133,9 @@ components:
         elementPeriod:
           type: string
           description: |-
-            Possible periods are following:
-            | Period | Usage | 
-            | ---------------- | ------------| 
-            | ELEMENT | when the time filter is either inherited from the report or the time filter configured in the report element configuration. |
-            | MONAD | when the time filter is inherited from the custom metric configuration. |
+            One of the following periods should be used:
+            * ELEMENT: when the time filter is either inherited from the report or the time filter configured in the report element configuration.
+            * MONAD: when the time filter is inherited from the custom metric configuration.
           enum:
             - ELEMENT
             - MONAD

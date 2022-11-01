@@ -84,7 +84,7 @@ components:
       properties:
         name:
           type: string
-          description: Name of the Metric or Dimension being filtered
+          description: Name of the Metric or Dimension being filtered.
         filterPredicate:
           $ref: '#/components/schemas/FilterPredicateEnum'
         connector:
@@ -95,7 +95,7 @@ components:
           $ref: '#/components/schemas/ContextEnum'
         intern:
           type: boolean
-          description: Indicates if filter should be prioritized, (Advanced)
+          description: Indicates if filter should be prioritized (Advanced).
           default: false
         value1:
           type: string

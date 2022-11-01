@@ -221,7 +221,7 @@ components:
             type:
               type: string
               description: type of comparison. It can be either on *time* or *segment*. The corresponding properties
-                must be filled according in *values* and *sorting*
+                must be filled accordingly in *values* and *sorting*
               enum:
                 - time
                 - segment

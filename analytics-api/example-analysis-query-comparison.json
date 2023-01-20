@@ -1,0 +1,77 @@
+{
+    "resultType": "DATA_ONLY",
+    "queryObject": {
+        "columns": [
+            {
+                "name": "browser_fullName",
+                "scope": "OBJECT",
+                "context": "SESSION",
+                "variant": "NORMAL",
+                "lowerLimit": 1,
+                "upperLimit": 20
+            },
+            {
+                "name": "visits",
+                "columnPeriod": "ANALYSIS",
+                "sortDirection": "DESCENDING",
+                "sortIndex": 1,
+                "scope": "OBJECT",
+                "context": "SESSION",
+                "variant": "NORMAL"
+            }
+        ],
+        "viewMode": {
+            "active": "comparison",
+            "comparison": {
+                "type": "time",
+                "values": {
+                    "time": [
+                        {
+                            "name": "time_dynamic",
+                            "value1": "last_14_days",
+                            "value2": "",
+                            "filterPredicate": "LIKE",
+                            "connector": "AND",
+                            "context": "NONE",
+                            "caseSensitive": false
+                        },
+                        {
+                            "name": "time_dynamic",
+                            "value1": "last_14_days_previous_year",
+                            "value2": "",
+                            "filterPredicate": "LIKE",
+                            "connector": "AND",
+                            "context": "NONE",
+                            "caseSensitive": false
+                        }
+                    ],
+                    "segment": []
+                },
+                "sorting": {
+                    "time": [
+                        {
+                            "resultColumn": 2,
+                            "direction": "DESCENDING"
+                        }
+                    ],
+                    "segment": []
+                }
+            }
+        },
+        "variant": "LIST",
+        "predefinedContainer": {
+            "filters": [
+                {
+                    "name": "time_range",
+                    "filterPredicate": "BETWEEN",
+                    "connector": "AND",
+                    "caseSensitive": false,
+                    "context": "NONE",
+                    "value1": "2022-12-23 00:00:00",
+                    "value2": "2023-01-20 00:00:00"
+                }
+            ],
+            "containers": []
+        }
+    }
+}

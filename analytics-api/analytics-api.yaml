@@ -791,7 +791,11 @@ paths:
               $ref: '#/components/schemas/AnalysisQuery'
             examples:
               Pivot:
-                $ref: ./example-analysis-query.json
+                $ref: ./example-analysis-query-pivot.json
+              Comparison:
+                $ref: ./example-analysis-query-comparison.json
+              TimeSeries:
+                $ref: ./example-analysis-query-time-series.json
       responses:
         '200':
           description: Analysis completed

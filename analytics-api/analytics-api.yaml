@@ -180,6 +180,9 @@ components:
                 type: integer
               upperLimit:
                 type: integer
+              inTimeSeries:
+                type: boolean
+                description: Optional property indicating if a column will be used in time series view mode; defaults to false. Can be omitted if it's value is not set to true.
               columnPeriod:
                 $ref: '#/components/schemas/ColumnPeriodEnum'
               scope:
@@ -203,18 +206,19 @@ components:
           items:
             $ref: '#/components/schemas/Filter'
         viewMode:
-          $ref: '#/components/schemas/ComparisonViewMode'
+          $ref: '#/components/schemas/ViewMode'
       required:
         - columns
         - variant
         - predefinedContainer
-    ComparisonViewMode:
+    ViewMode:
       type: object
       properties:
         active:
           type: string
           enum:
             - comparison
+            - timeSeries
         comparison:
           type: object
           properties:
@@ -247,6 +251,26 @@ components:
                   type: array
                   items:
                     $ref: '#/components/schemas/ViewModeComparisonSortingItem'
+        timeSeries:
+          type: object
+          properties:
+            timeName:
+              type: string
+              description: The name of the time dimension used in the time series - i.e. "time_days" for days.
+            viewType:
+              type: string
+              description: The type of the time series view mode. Set "top" for time series of the top "x" number of objects. Set "values" based on specific object values populated in the values list of this configuration.
+              enum:
+                - top
+                - values
+            top:
+              type: integer
+              description: The number of top objects the time series is build upon.
+            values:
+              type: array
+              description: A list of object values - i.e. ["Seach", "Cart", "Home"] for object "pages".
+              items:
+                type: string
     ViewModeComparisonSortingItem:
       type: object
       description: Sorting of comparison
@@ -767,7 +791,11 @@ paths:
               $ref: '#/components/schemas/AnalysisQuery'
             examples:
               Pivot:
-                $ref: ./example-analysis-query.json
+                $ref: ./example-analysis-query-pivot.json
+              Comparison:
+                $ref: ./example-analysis-query-comparison.json
+              TimeSeries:
+                $ref: ./example-analysis-query-time-series.json
       responses:
         '200':
           description: Analysis completed

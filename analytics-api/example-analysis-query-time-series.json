@@ -1,0 +1,79 @@
+{
+    "resultType": "DATA_ONLY",
+    "queryObject": {
+        "columns": [
+            {
+                "name": "pages",
+                "scope": "OBJECT",
+                "context": "PAGE",
+                "variant": "NORMAL",
+                "lowerLimit": 1,
+                "upperLimit": 20
+            },
+            {
+                "name": "pages_pageImpressions",
+                "columnPeriod": "ANALYSIS",
+                "sortDirection": "DESCENDING",
+                "sortIndex": 1,
+                "scope": "OBJECT",
+                "context": "PAGE",
+                "variant": "NORMAL",
+                "inTimeSeries": true
+            },
+            {
+                "name": "visits",
+                "columnPeriod": "ANALYSIS",
+                "scope": "OBJECT",
+                "context": "SESSION",
+                "variant": "NORMAL"
+            },
+            {
+                "name": "pages_durationAvg",
+                "columnPeriod": "ANALYSIS",
+                "scope": "OBJECT",
+                "variant": "NORMAL",
+                "inTimeSeries": true
+            },
+            {
+                "name": "visits_bounceRate",
+                "columnPeriod": "ANALYSIS",
+                "scope": "OBJECT",
+                "variant": "NORMAL"
+            },
+            {
+                "name": "pages_exitRate",
+                "columnPeriod": "ANALYSIS",
+                "scope": "OBJECT",
+                "variant": "NORMAL"
+            }
+        ],
+        "viewMode": {
+            "active": "timeSeries",
+            "timeSeries": {
+                "timeName": "time_days",
+                "values": [
+                    "Search",
+                    "Home",
+                    "Cart"
+                ],
+                "top": 3,
+                "viewType": "top"
+            }
+        },
+        "predefinedContainer": {
+            "filters": [
+                {
+                    "name": "time_dynamic",
+                    "connector": "AND",
+                    "filterPredicate": "LIKE",
+                    "value1": "last_28_days",
+                    "value2": "",
+                    "context": "NONE",
+                    "caseSensitive": false
+                }
+            ],
+            "containers": []
+        },
+        "variant": "LIST"
+    }
+}

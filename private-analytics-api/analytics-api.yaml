@@ -10,8 +10,12 @@ info:
     name: Technical Support Mapp Digital
     url: https://mapp.com/tech-support/
 servers:
-  - url: https://analytics-int-01.nbg.webtrekk.com/analytics-service/intelligence-api/
+  - url: https://analytics-dev-01.nbg.webtrekk.com/analytics-service/private-intelligence-api
+    description: DEV
+  - url: https://analytics-int-01.nbg.webtrekk.com/analytics-service/private-intelligence-api
     description: INT
+  - url: https://analytics-qa-01.nbg.webtrekk.com/analytics-service/private-intelligence-api
+    description: QA
 tags:
   - name: Analysis
     description: Submit analysis and get data
@@ -23,9 +27,9 @@ components:
       type: oauth2
       flows:
         clientCredentials:
-          tokenUrl: https://analytics-int-01.nbg.webtrekk.com/analytics-service/intelligence-api/oauth/token
+          tokenUrl: /analytics-service/private-intelligence-api/oauth/token
           scopes:
-            mapp.intelligence-api: Use intelligence APIs
+            mapp.intelligence-api.private: Use intelligence APIs for internal usage
   schemas:
     FilterPredicateEnum:
       type: string
@@ -796,6 +800,19 @@ paths:
                 $ref: ../examples/example-analysis-query-comparison.json
               TimeSeries:
                 $ref: ../examples/example-analysis-query-time-series.json
+      parameters:
+        - name: accountId
+          in: query
+          description: Id of the account where the query must be executed
+          required: true
+          schema:
+            type: string
+        - name: userId
+          in: query
+          description: Id of the user with which the query must be executed (User Filter etc...)
+          required: false
+          schema:
+            type: string
       responses:
         '200':
           description: Analysis completed
@@ -936,6 +953,13 @@ paths:
       description: Get number of analysis done for current month
       externalDocs:
         url: https://documentation.mapp.com
+      parameters:
+        - name: accountId
+          in: query
+          description: Id of the account whose the analysis usage is requested
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: OK
@@ -972,6 +996,12 @@ paths:
           required: false
           schema:
             type: string
+        - name: accountId
+          in: query
+          description: Id of the account whose the query objects are requested
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: OK
@@ -992,6 +1022,13 @@ paths:
       description: List all available segments
       externalDocs:
         url: https://documentation.mapp.com
+      parameters:
+        - name: accountId
+          in: query
+          description: Id of the account whose segments are requested
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: OK
@@ -1028,6 +1065,12 @@ paths:
 
             Default is  "en"
           required: false
+          schema:
+            type: string
+        - name: accountId
+          in: query
+          description: Id of the account whose the dynamic time filters are requested
+          required: true
           schema:
             type: string
       responses:

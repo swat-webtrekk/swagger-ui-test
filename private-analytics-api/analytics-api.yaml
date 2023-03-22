@@ -1,10 +1,12 @@
 openapi: 3.0.3
 info:
-  title: Analytics API
+  title: Private Analytics API
   description: |-
-    OpenAPI 3.0 Specification of Mapp Intelligence AnalyticsAPI 
+    OpenAPI 3.0 Specification of Mapp Intelligence Private AnalyticsAPI 
 
-     In order to use these endpoints you must authorize by using a valid OAuth clientID configured in Mapp Intelligence Settings section.
+    In order to use these endpoints you must authorize by using a valid OAuth clientID configured in Mapp Intelligence Settings section.
+    
+    This API can be solelly used within Mapp Network.
   version: 1.0.0
   contact:
     name: Technical Support Mapp Digital
@@ -16,6 +18,8 @@ servers:
     description: INT
   - url: https://analytics-qa-01.nbg.webtrekk.com/analytics-service/private-intelligence-api
     description: QA
+  - url: https://analytics-prod-01.nbg.webtrekk.com/analytics-service/private-intelligence-api
+    description: PROD
 tags:
   - name: Analysis
     description: Submit analysis and get data

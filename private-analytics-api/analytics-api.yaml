@@ -12,13 +12,13 @@ info:
     name: Technical Support Mapp Digital
     url: https://mapp.com/tech-support/
 servers:
-  - url: https://analytics-dev-01.nbg.webtrekk.com/analytics-service/private-intelligence-api
+  - url: https://intelligence-dev-private.nbg.webtrekk.com/analytics/api
     description: DEV
-  - url: https://analytics-int-01.nbg.webtrekk.com/analytics-service/private-intelligence-api
+  - url: https://intelligence-int-private.nbg.webtrekk.com/analytics/api
     description: INT
-  - url: https://analytics-qa-01.nbg.webtrekk.com/analytics-service/private-intelligence-api
+  - url: https://intelligence-qa-private.nbg.webtrekk.com/analytics/api
     description: QA
-  - url: https://analytics-prod-01.nbg.webtrekk.com/analytics-service/private-intelligence-api
+  - url: https://intelligence.nbg.webtrekk.com/analytics/api
     description: PROD
 tags:
   - name: Analysis
